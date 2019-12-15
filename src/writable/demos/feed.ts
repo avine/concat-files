@@ -58,32 +58,7 @@ class FeedWritable {
   }
 }
 
-new FeedWritable(40, new WritableLogger(120)).start();
+const writable = new WritableLogger(50);
+writable.speed = 120;
 
-/*
-const stream = new WritableLogger(120);
-
-stream.on('finish', () => console.log('* finish *')); // FIXME: NOT visible...
-
-let count = 0;
-
-function feedStream(): void {
-  const interval = setInterval(() => {
-    count += 1;
-
-    if (count < 100) {
-      const isWritable = stream.write(count.toString());
-
-      if (!isWritable) {
-        clearInterval(interval);
-        stream.once('drain', feedStream);
-      }
-    } else {
-      clearInterval(interval);
-      stream.end(count.toString());
-    }
-  }, 40);
-}
-
-feedStream();
-*/
+new FeedWritable(40, writable).start();

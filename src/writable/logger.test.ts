@@ -7,7 +7,7 @@ jest.mock('log-update');
 test('WritableLogger .write() should call .next()', () => {
   jest.useFakeTimers();
 
-  const stream = new WritableLogger(100);
+  const stream = new WritableLogger();
 
   const nextMock = jest.fn();
 
@@ -42,7 +42,7 @@ test('WritableLogger .write() should return false when highWaterMark reached', (
   jest.useFakeTimers();
 
   const highWaterMark = 3;
-  const stream = new WritableLogger(100, highWaterMark);
+  const stream = new WritableLogger(highWaterMark);
 
   const isWritable = [
     stream.write('A'),
@@ -63,7 +63,7 @@ test('WritableLogger should emit "drain" event when writable again', () => {
   jest.useFakeTimers();
 
   const highWaterMark = 3;
-  const stream = new WritableLogger(100, highWaterMark);
+  const stream = new WritableLogger(highWaterMark);
 
   const drainMock = jest.fn();
   stream.on('drain', drainMock);

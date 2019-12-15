@@ -2,16 +2,18 @@ import logUpdate from 'log-update';
 import { Writable } from 'stream';
 
 export default class WritableLogger extends Writable {
-  enableLogs = true;
+  speed = 1000;
 
-  constructor(public speed: number, public highWaterMark = 50) {
+  logEnabled = true;
+
+  constructor(highWaterMark?: number) {
     super({ decodeStrings: false, highWaterMark });
   }
 
   _write(chunk: string, encoding: string, next: (error?: Error) => void): void {
     setTimeout(() => {
       next();
-      if (this.enableLogs) {
+      if (this.logEnabled) {
         this.log(chunk);
       }
     }, this.speed);
