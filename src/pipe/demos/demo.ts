@@ -1,5 +1,5 @@
 import ReadableCounter from '../../readable/counter';
-import WritableLogger from '../logger';
+import WritableLogger from '../../writable/logger';
 
 const readable = new ReadableCounter(100, 1, 25);
 readable.speed = 40;
