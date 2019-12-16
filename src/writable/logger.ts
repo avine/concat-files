@@ -24,6 +24,6 @@ export default class WritableLogger extends Writable {
     const progress = Array(this.writableLength)
       .fill('.')
       .join('');
-    logUpdate(`\n<${length}> ${progress}\n\n${chunk}\n\n`);
+    logUpdate(`\n<${length}> ${progress}\n${chunk}\n\n`);
   }
 }

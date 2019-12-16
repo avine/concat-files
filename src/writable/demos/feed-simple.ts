@@ -1,12 +1,10 @@
 import WritableLogger from '../logger';
 
-const loggerSpeed = 120;
-const feedSpeed = 40;
+const loggerSpeed = 150;
+const feedSpeed = 50;
 
 const writable = new WritableLogger(50);
 writable.speed = loggerSpeed;
-
-writable.on('finish', () => console.log('* finish *')); // FIXME: NOT visible...
 
 const dataLimit = 100;
 let data = 0;

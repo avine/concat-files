@@ -21,7 +21,7 @@ export default class ReadableCounter extends Readable {
     setTimeout(() => {
       this.pushDataBatch();
       if (this.logEnabled) {
-        this.logStatus();
+        this.log();
       }
     }, this.speed);
   }
@@ -44,7 +44,7 @@ export default class ReadableCounter extends Readable {
     return this.push(null);
   }
 
-  private logStatus(): void {
+  private log(): void {
     const mode = this.isPaused() ? 'paused' : 'flowing';
     log(`<${this.readableLength}> ${mode}`);
   }

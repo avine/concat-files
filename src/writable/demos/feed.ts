@@ -9,9 +9,7 @@ class FeedWritable {
 
   dataLimit = 100;
 
-  constructor(public speed: number, private writable: Writable) {
-    this.handleFinish();
-  }
+  constructor(public speed: number, private writable: Writable) {}
 
   start(): void {
     if (this.interval === null) {
@@ -52,13 +50,9 @@ class FeedWritable {
     this.stop();
     this.writable.end(this.data.toString());
   }
-
-  private handleFinish(): void {
-    this.writable.on('finish', () => console.log('* finish *')); // FIXME: NOT visible...
-  }
 }
 
 const writable = new WritableLogger(50);
-writable.speed = 120;
+writable.speed = 150;
 
-new FeedWritable(40, writable).start();
+new FeedWritable(50, writable).start();

@@ -44,11 +44,7 @@ test('WritableLogger .write() should return false when highWaterMark reached', (
   const highWaterMark = 3;
   const stream = new WritableLogger(highWaterMark);
 
-  const isWritable = [
-    stream.write('A'),
-    stream.write('B'),
-    stream.write('C'),
-  ];
+  const isWritable = [stream.write('A'), stream.write('B'), stream.write('C')];
 
   jest.runOnlyPendingTimers();
   jest.runOnlyPendingTimers();
@@ -96,5 +92,5 @@ function logUpdateOutputMock(writeableLength: number, chunk: string): string {
     throw new Error(`Unhandled writeableLength=${writeableLength}`);
   }
   const { length, progress } = output[writeableLength];
-  return `\n<${length}> ${progress}\n\n${chunk}\n\n`;
+  return `\n<${length}> ${progress}\n${chunk}\n\n`;
 }
